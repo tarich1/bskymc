@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueskyMC</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #0c4a6e, #082f49);
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #3b82f6, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: #ef4444;
+            font-weight: 600;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .button {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0369a1;
+        }
+        .grid {
+            display: grid;
+            gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .grid-cols-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: rgba(186, 230, 253, 0.6);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <p style="color: #38bdf8; margin-bottom: 1rem;">ようこそ</p>
+            <h1 class="title">BlueSkyMC</h1>
+            <p class="subtitle">Informal</p>
+        </header>
+
+        <div class="card">
+            <div class="flex">
+                <p style="color: #bae6fd;">サーバーアドレス:</p>
+                <button id="copyButton" class="button">
+                    bskymc.com
+                    <span id="copyMessage" style="display: none; position: absolute; font-size: 0.75rem;">コピーしました！</span>
+                </button>
+            </div>
+            <div class="flex" style="margin-top: 1rem;">
+                <p style="color: #bae6fd;">ゲーマータグ:</p>
+                <p style="color: #38bdf8;">bskymcinf</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">サーバー情報</h2>
+            <div class="grid">
+                <div class="flex">
+                    <span style="color: #bae6fd;">サーバーバージョン:</span>
+                    <span style="color: #38bdf8;">Paper 1.21.1</span>
+                </div>
+                <hr style="border-color: rgba(255, 255, 255, 0.2); margin: 0.5rem 0;">
+                <div>
+                    <p style="color: #bae6fd; margin-bottom: 0.5rem;">対応バージョン:</p>
+                    <ul style="color: #38bdf8; padding-left: 1.5rem;">
+                        <li>Java Edition: 1.21 - 1.21.3</li>
+                        <li>Bedrock Edition: 1.20.80 - 1.21.44</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2" style="gap: 1rem; margin-bottom: 1.5rem;">
+            <a href="https://bskymc.com/dynmap/" target="_blank" class="button" style="text-align: center; text-decoration: none;">
+                Dynmapを見る
+            </a>
+            <a href="https://bskymc.com/bluemap/" target="_blank" class="button" style="text-align: center; text-decoration: none;">
+                BlueＭapを見る
+            </a>
+            <a href="https://bskymc.com/discord/" target="_blank" class="button" style="text-align: center; text-decoration: none; background-color: #4f46e5;">
+                Discordに参加
+            </a>
+        </div>
+
+        <div class="card">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">BlueSkyMCって何？</h2>
+            <p style="color: #bae6fd; line-height: 1.5;">
+                Blueskyという SNSの非公式マイクラサーバーです！
+                ゆったりとみんなでマイクラをしております。
+            </p>
+        </div>
+
+        <footer class="footer">
+            <p>© 2024 BlueSkyMC. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // ページ読み込み時のアニメーション
+        window.addEventListener('load', function() {
+            document.querySelector('.container').classList.add('visible');
+        });
+
+        // サーバーアドレスのコピー機能
+        document.getElementById('copyButton').addEventListener('click', function() {
+            navigator.clipboard.writeText('bskymc.com').then(function() {
+                var copyMessage = document.getElementById('copyMessage');
+                copyMessage.style.display = 'inline';
+                setTimeout(function() {
+                    copyMessage.style.display = 'none';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
