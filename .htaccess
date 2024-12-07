@@ -1,3 +1,2 @@
-RewriteEngine On
-RewriteCond %{http_host} ^tarich1.github.io/bskymc
-RewriteRule ^(.*) https://tarich1.github.io [R=301,L]
+RewriteEngine on
+RewriteRule ^bskymc(.*)$ /$1 [L,R=301]
